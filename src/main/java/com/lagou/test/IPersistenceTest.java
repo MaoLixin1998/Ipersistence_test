@@ -1,5 +1,6 @@
 package com.lagou.test;
 
+import com.lagou.dao.IUserDao;
 import  com.lagou.io.Resources;
 import com.lagou.pojo.User;
 import com.lagou.sqlSession.SqlSession;
@@ -23,12 +24,16 @@ public class IPersistenceTest {
         user.setId(1);
         user.setUsername("aaa");
 
-
-        List<User> user2 = sqlSession.selectList("user.selectList");
-        for (User user1 : user2) {
-
-            System.out.println(user1);
-        }
+//
+//        List<User> user2 = sqlSession.selectList("user.selectList");
+//        for (User user1 : user2) {
+//
+//            System.out.println(user1);
+//        }
+        IUserDao userDao = sqlSession.getMapper(IUserDao.class);
+        List<User> all = userDao.findAll();
+        User user2 = userDao.findByCondition(user);
+        System.out.println(all);
 
     }
 }
