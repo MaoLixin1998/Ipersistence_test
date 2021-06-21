@@ -5,7 +5,7 @@
         select * from product
     </select>
 
-    <select id = "selectOne">
+    <select id = "selectOne" resultType="com.lagou.pojo.Product" paramterType="com.lagou.pojo.Product">
         select * from product where id = ? and username = ?
     </select>
 
